@@ -196,7 +196,18 @@ print(classification_report(y_test, y_pred, target_names=le.classes_))
 
 <H3>Output:</H3>
 
-Show your results here
+![image](https://github.com/user-attachments/assets/287b2000-9c04-47a7-be30-a2c6c47b9b7f)
+
+![image](https://github.com/user-attachments/assets/47b7f9e6-89e3-48fc-98ca-b56ea3530c69)
+
+![image](https://github.com/user-attachments/assets/c7416996-5388-4833-bfa4-ca0911c17bec)
+
+![image](https://github.com/user-attachments/assets/f5a1dadf-34c6-4dc7-9166-57b26e5bec18)
+
+![image](https://github.com/user-attachments/assets/434c2853-ab0e-477e-a48c-fe7cdcba96a1)
+
+
+
 
 <H3>Result:</H3>
 Thus, MLP is implemented for multi-classification using python.
