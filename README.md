@@ -1,8 +1,8 @@
 
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>P PARTHIBAN</H3>
+<H3>212223230145</H3>
 <H3>EX. NO.4</H3>
-<H3>DATE:</H3>
+<H3>28.04.2025</H3>
 <H1 ALIGN =CENTER>Implementation of MLP with Backpropagation for Multiclassification</H1>
 <H3>Aim:</H3>
 To implement a Multilayer Perceptron for Multi classification
@@ -116,7 +116,83 @@ Normalize our dataset.
 
 <H3>Program:</H3> 
 
-Insert your code here
+### Include packages and builtin classes
+```PYTHON
+import pandas as pd
+import sklearn
+from sklearn import preprocessing
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+```
+
+### Read the csv file to be considered for Multi-classification
+```PYTHON
+url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+columns = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth', 'Species']
+df = pd.read_csv(url, names=columns)
+```
+
+## Seperate the input features and target from the dataset
+```PYTHON
+X = df.iloc[:, 0:4]
+y = df.iloc[:, 4]
+```
+### Transform the categorial into numerical values
+```PYTHON
+# Initialize encoder
+le = LabelEncoder()
+
+# Fit and transform the target column
+y_encoded = le.fit_transform(y)
+
+# Optional: To see the mapping
+print(dict(zip(le.classes_, le.transform(le.classes_))))
+```
+
+### Split the data  for training  and testing
+```PYTHON
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+```
+
+### Normalize the input features
+```PYTHON
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+```
+
+### Define the MLP classifier
+```PYTHON
+#Train the classifier 
+model = MLPClassifier(hidden_layer_sizes=(12, 13, 14), activation='relu', solver='adam', max_iter=2500)
+model.fit(X_train, y_train)
+```
+
+### Evaluation of algorithm performance in classifying.
+```PYTHON
+predictions = model.predict(X_test)
+print(confusion_matrix(y_test, predictions))
+print(classification_report(y_test, predictions))
+```
+### Train MLP classifier
+```python
+clf = MLPClassifier(hidden_layer_sizes=(12, 13, 14), activation='relu', solver='adam', max_iter=2500)
+clf.fit(X_train, y_train)
+```
+
+### Predictions
+```python
+y_pred = clf.predict(X_test)
+```
+
+### Confusion matrix and report
+```python
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test, y_pred, target_names=le.classes_))
+```
 
 <H3>Output:</H3>
 
